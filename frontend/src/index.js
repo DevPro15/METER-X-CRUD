@@ -1,6 +1,9 @@
+// React
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";// snackbar
+// Component
+import App from "./App";
+// Snackbar
 import { SnackbarProvider } from "notistack";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -1,17 +1,26 @@
-import axios from "axios";
+// React & Hooks
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+// Axios
+import axios from "axios";
+// Bootstrap
+import { Button, Form } from "react-bootstrap";
+// React-Router-Dom
 import { useNavigate } from "react-router-dom";
+// Snackbar
 import { useSnackbar } from "notistack";
 
+// AddBill function: for Adding data in list (POST REQ)
 const AddBill = () => {
+  // States
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState("");
 
+  // Snackbar constant
   const { enqueueSnackbar } = useSnackbar();
+  // React-Router-Dom constant
   let history = useNavigate();
 
+  // function to send post req on onClick
   const handleSubmit = async (e) => {
     e.preventDefault();
     const post = { billingDate: date, amount: amount };

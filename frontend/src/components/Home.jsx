@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
+// React & Hooks
+import React, { useState, useEffect } from "react";
+// Axios
 import axios from "axios";
+// Bootstrap
+import { Table, Button } from "react-bootstrap";
+// Bootstrap Icons
 import { MdDelete } from "react-icons/md";
 import { AiTwotoneEdit } from "react-icons/ai";
-import Button from "react-bootstrap/Button";
+// React-Router-Dom
 import { useNavigate } from "react-router-dom";
+// Snackbar
 import { useSnackbar } from "notistack";
 
 const Home = () => {
+  // States
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
 
+  // Snackbar constant
   const { enqueueSnackbar } = useSnackbar();
+  // React-Router-Dom constant
   let history = useNavigate();
 
+  // Function for converting timestamp to read-able
   const formatDate = (dateString) => {
     const options = {
       year: "numeric",
@@ -27,10 +36,12 @@ const Home = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  // sending argument to params in next component
   const handleProceed = (id) => {
     history(`/edit_bill/${id}`);
   };
 
+  // delete function: for deleting data
   const deleteHandler = async (id) => {
     try {
       axios.delete(`http://localhost:8080/api/bills/${id}`);
@@ -41,6 +52,7 @@ const Home = () => {
     window.location.reload();
   };
 
+  // useEffect: for fetching all the data
   useEffect(() => {
     const headers = {
       "access-control-allow-origin": "*",
@@ -67,6 +79,7 @@ const Home = () => {
 
     fetchData();
   }, [enqueueSnackbar]);
+
   return (
     <div className="d-flex flex-column align-items-center justify-content-center mt-5 home">
       <h2 className="text-white text-decoration-underline">

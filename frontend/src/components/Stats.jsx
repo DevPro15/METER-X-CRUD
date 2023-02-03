@@ -1,3 +1,4 @@
+// React
 import React from "react";
 // Chart Component
 import {
@@ -21,6 +22,7 @@ ChartJS.register(
   Legend
 );
 
+// Constant options: used as styles
 export const options = {
   scales: {
     x: {
@@ -51,6 +53,7 @@ export const options = {
   },
 };
 
+// Bar Chart Function: data which has to be displayed
 export default function BarChart() {
   const data = {
     // labels: xLabels,

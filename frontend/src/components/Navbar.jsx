@@ -1,10 +1,11 @@
+// React
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Stack from "react-bootstrap/Stack";
+// Bootstrap
+import { Container, Nav, Navbar, Stack } from "react-bootstrap";
+// React-Router-Dom
 import { Link } from "react-router-dom";
 
+// Header function: used as Navbar
 function Header() {
   return (
     <div>

@@ -1,18 +1,27 @@
-import axios from "axios";
+// React & Hooks
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+// Axios
+import axios from "axios";
+// Bootstrap
+import { Button, Form } from "react-bootstrap";
+// React-Router-Dom
 import { useNavigate, useParams } from "react-router-dom";
+// Snackbar
 import { useSnackbar } from "notistack";
 
 const EditBill = () => {
+  // States
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState("");
 
+  // Snackbar constant
   const { enqueueSnackbar } = useSnackbar();
+  // React-Router-Dom constant
   let history = useNavigate();
+  // React-Router-Dom params: used as a parameter in which argument is pased from another component
   let { id } = useParams();
 
+  // function to edit & update data on onClick
   const handleSubmit = async (e) => {
     e.preventDefault();
     const put = { billingDate: date, amount: amount };
@@ -25,6 +34,7 @@ const EditBill = () => {
     history("/");
   };
 
+  // useEffect: for fetching data which has to be updated
   useEffect(() => {
     const headers = {
       "Content-type": "application/json",
